@@ -6,6 +6,8 @@
 	var $usersDisplay 	= $usersElement.find('.users__display');
 	var allUsers 		= [];
 
+	//$usersList.css('top', (($(window).height() / 2) - ($(this).height() / 2)) + 'px');
+
 	function newUserListComponent(user, parent) {
 
 		var $li 	= $('<li>').addClass('users__user');
@@ -80,31 +82,72 @@
 	}
 	
 
+	function hideDisplay() {
+
+		// IF screen size is <= 600px hide userDisplay and slide and stretch usersList to
+		// fill screen, else show it to the right of usersList and slide usersList to the left.
+		if ($(window).width() <= 600) {
+			$usersList.animate({
+				height: ($(this).height() - 30) + 'px'
+			}, 500);
+
+			$usersDisplay.animate({
+				top: '100%',
+				height: '0px'
+			}, 500);
+			
+		}
+		else {
+			console.log('hiding');
+			$usersList.animate({
+				left: ($(window).width() / 2) - ($(this).width() / 2)
+			});
+		}
+	}
+
+	function showDisplay() {
+		
+
+		
+
+		// IF screen size is <= 600px show userDisplay fullscreen and slide and shrink usersList to
+		// the top, else show it to the right of usersList and slide usersList to the left.
+		if ($(window).width() <= 600) {
+			$usersList.animate({
+
+				height: '120px'
+			}, 500);
+
+			$usersDisplay.animate({
+				top: '135px',
+				height: ($(this).height() - 180) + 'px'
+			}, 500);
+			
+		}
+		else {
+			console.log('showing');
+			$usersList.animate({
+				left: '0px'
+			}, 500);
+		}
+	}
 
 	function displayUser(event, userObject) {
 
 		var $closeBtn = $('.users__display-close');
-		$closeBtn.off();
+
+	/*	if ($closeBtn.length > 0) {
+			$closeBtn.off();
+			console.log('click event deleted');
+		}*/
+
 		$usersDisplay.html('');
 
 
 		$closeBtn = $('<div>').addClass('users__display-close').html('&times;').appendTo($usersDisplay);
 
-		$closeBtn.on('click', function(event) {
-
-			$usersDisplay.animate({
-				top: $(this).offset().top + 30 + 'px',
-				opacity: 0
-			}, 500, function() {
-				$(this).removeClass('visible');
-			});
-
-			deselectUsers();
-
-		});
-
 		var userElement = userObject.userElement;
-		var userData = userObject.userData;
+		var userData 	= userObject.userData;
 
 
 		var $img 	= $('<img>').addClass('users__display-img').attr('src', userData.img).appendTo($usersDisplay);
@@ -123,11 +166,16 @@
 			}
 		}
 
-		$usersDisplay.addClass('visible');
-		$usersDisplay.animate({
-			top: 0,
-			opacity: 1
-		}, 500);
+
+		$closeBtn.on('click', function(event) {
+
+			hideDisplay();
+			deselectUsers();
+			$(this).off();  // Removes event listeners.
+
+		});
+
+		showDisplay();
 
 
 		console.log(userData);

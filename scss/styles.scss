@@ -30,7 +30,7 @@ ul li {
 		background-color: white;
 		border-radius: 10px;
 		box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
-		height: 300px;
+		max-height: 500px;
 		margin: 15px;
 		overflow: auto;
 		position: absolute;
@@ -84,17 +84,16 @@ ul li {
 		background-color: white;
 		border-radius: 10px;
 		box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-		display: none;
+		display: block;
 		margin: 15px;
 		max-height: 500px;
 		max-width: 500px;
-		overflow: hidden;
-		opacity: 0;
+		width: 300px;
+		overflow: auto;
+		opacity: 1;
 		position: absolute;
+		top: 100%;
 
-		&.visible {
-			display: block;
-		}
 	}
 
 	&__display-close {
@@ -137,22 +136,52 @@ ul li {
 		&-key {
 			background-color: $lightColor;
 			color: white;
-			flex: 1;
+			flex: 2;
 			text-align: right;
 			padding: 15px;
 		}
 
 		&-value {
 			background-color: white;
-			flex: 1;
-			text-align: left;
-			padding: 15px;
 			box-shadow: inset 0px 0px 2px rgba(0,0,0,0.3);
+			color: #333;
+			flex: 6;
+			overflow: hidden;
+			padding: 15px 7px;
+			text-align: left;
+
+			
+			
+
 		}
 
 	}
 
 	&__display-name {
 		text-align: center;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.users {
+
+		&__list {
+			top: 0px;
+			height: calc(100% - 30px);
+			width: 300px;
+		}
+
+		&__display {
+
+		}
+
+
+		&__display-info-key {
+
+		}
+
+		&__display-info-value {
+
+		}
 	}
 }
