@@ -2,52 +2,52 @@
 	"users" : [
 		{
 			"name": "Pablo",
-			"email": "pablo@gmail.com",
+			"email": "pablo@email.com",
 			"age": 23,
 			"website": "http://pablo.com",
-			"img": "https://api.adorable.io/avatars/50/1.png"
+			"img": "https://api.adorable.io/avatars/150/1.png"
 		},
 		{
 			"name": "Irene",
-			"email": "irene@gmail.com",
+			"email": "irene@email.com",
 			"age": 27,
 			"website": "http://irene.com",
-			"img": "https://api.adorable.io/avatars/50/2.png"
+			"img": "https://api.adorable.io/avatars/150/2.png"
 		},
 		{
 			"name": "Hannah",
-			"email": "hannah@gmail.com",
+			"email": "hannah@email.com",
 			"age": 26,
 			"website": "http://hannah.com",
-			"img": "https://api.adorable.io/avatars/50/3.png"
+			"img": "https://api.adorable.io/avatars/150/3.png"
 		},
 		{
 			"name": "Mr. Somebody",
-			"email": "somebody@gmail.com",
+			"email": "somebody@email.com",
 			"age": 35,
 			"website": "http://somebody.com",
-			"img": "https://api.adorable.io/avatars/50/4.png"
+			"img": "https://api.adorable.io/avatars/150/4.png"
 		},
 		{
 			"name": "Frank",
-			"email": "frank@gmail.com",
+			"email": "frank@email.com",
 			"age": 46,
 			"website": "http://wakajawaka.com",
-			"img": "https://api.adorable.io/avatars/50/5.png"
+			"img": "https://api.adorable.io/avatars/150/5.png"
 		},
 		{
 			"name": "Abraham",
-			"email": "abraham@gmail.com",
+			"email": "abraham@email.com",
 			"age": 31,
 			"website": "http://abraham.com",
-			"img": "https://api.adorable.io/avatars/50/6.png"
+			"img": "https://api.adorable.io/avatars/150/6.png"
 		},
 		{
 			"name": "Diogenes",
-			"email": "diogenes@gmail.com",
+			"email": "diogenes@email.com",
 			"age": 33,
 			"website": "http://diogenes.com",
-			"img": "https://api.adorable.io/avatars/50/7.png"
+			"img": "https://api.adorable.io/avatars/150/7.png"
 		}
 	]
 }
