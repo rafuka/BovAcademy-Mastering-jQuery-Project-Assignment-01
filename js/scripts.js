@@ -73,12 +73,35 @@
 	}
 
 
+	function deselectUsers() {
+		$(allUsers).each(function(i, elm) {
+			$(this.userElement).removeClass('users__user--active');
+		});
+	}
 	
 
 
 	function displayUser(event, userObject) {
 
+		var $closeBtn = $('.users__display-close');
+		$closeBtn.off();
 		$usersDisplay.html('');
+
+
+		$closeBtn = $('<div>').addClass('users__display-close').html('&times;').appendTo($usersDisplay);
+
+		$closeBtn.on('click', function(event) {
+
+			$usersDisplay.animate({
+				top: $(this).offset().top + 30 + 'px',
+				opacity: 0
+			}, 500, function() {
+				$(this).removeClass('visible');
+			});
+
+			deselectUsers();
+
+		});
 
 		var userElement = userObject.userElement;
 		var userData = userObject.userData;
@@ -89,16 +112,8 @@
 		var $info 	= $('<div>').addClass('users__display-info').appendTo($usersDisplay);
 		
 
-		// Create a users__display-info-pair element for each of the data fields to dislplay.
-
-		/*userData.forEach(function(key, value) {
-			if (key !== 'img' && key !== 'name') {
-				var $wrapper = $('<div>').addClass('users__display-info-pair').appendTo($info);
-				var $key = $('<div>').addClass('users__display-info-key').text(key).appendTo($wrapper);
-				var $value = $('<div>').addClass('users__display-info-value').text(value).appendTo($wrapper);
-			}
-		});*/
-
+		// Create a users__display-info-pair element for each of the data fields to dislplay,
+		// and append it to the info div.
 		for (var key in userData) {
 			console.log(key);
 			if (key !== 'img' && key !== 'name') {
@@ -107,6 +122,12 @@
 				var $value = $('<div>').addClass('users__display-info-value').text(userData[key]).appendTo($wrapper);
 			}
 		}
+
+		$usersDisplay.addClass('visible');
+		$usersDisplay.animate({
+			top: 0,
+			opacity: 1
+		}, 500);
 
 
 		console.log(userData);
