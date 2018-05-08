@@ -84,62 +84,19 @@
 
 	function hideDisplay() {
 
-		// IF screen size is <= 600px hide userDisplay and slide and stretch usersList to
-		// fill screen, else show it to the right of usersList and slide usersList to the left.
-		if ($(window).width() <= 600) {
-			$usersList.animate({
-				height: ($(this).height() - 30) + 'px'
-			}, 500);
-
-			$usersDisplay.animate({
-				top: '100%',
-				height: '0px'
-			}, 500);
-			
-		}
-		else {
-			console.log('hiding');
-			$usersList.animate({
-				left: ($(window).width() / 2) - ($(this).width() / 2)
-			});
-		}
+		$usersList.removeClass('active');
+		$usersDisplay.removeClass('visible');
 	}
 
 	function showDisplay() {
-		
 
-		
-
-		// IF screen size is <= 600px show userDisplay fullscreen and slide and shrink usersList to
-		// the top, else show it to the right of usersList and slide usersList to the left.
-		if ($(window).width() <= 600) {
-			$usersList.animate({
-
-				height: '120px'
-			}, 500);
-
-			$usersDisplay.animate({
-				top: '135px',
-				height: ($(this).height() - 180) + 'px'
-			}, 500);
-			
-		}
-		else {
-			console.log('showing');
-			$usersList.animate({
-				left: '0px'
-			}, 500);
-		}
+		$usersList.addClass('active');
+		$usersDisplay.addClass('visible');
 	}
 
 	function displayUser(event, userObject) {
 
 		var $closeBtn = $('.users__display-close');
-
-	/*	if ($closeBtn.length > 0) {
-			$closeBtn.off();
-			console.log('click event deleted');
-		}*/
 
 		$usersDisplay.html('');
 
@@ -171,7 +128,7 @@
 
 			hideDisplay();
 			deselectUsers();
-			$(this).off();  // Removes event listeners.
+			$(this).off();  // Removes close button event listeners.
 
 		});
 
