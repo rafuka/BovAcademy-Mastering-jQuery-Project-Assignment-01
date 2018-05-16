@@ -5,7 +5,8 @@
 			"email": "pablo@email.com",
 			"age": 23,
 			"website": "http://pablo.com",
-			"img": "https://api.adorable.io/avatars/150/1.png"
+			"img": "https://api.adorable.io/avatars/150/1.png",
+			"address": "somewhere over the rainbow, 137"
 		},
 		{
 			"name": "Irene",
@@ -19,7 +20,8 @@
 			"email": "hannah@email.com",
 			"age": 26,
 			"website": "http://hannah.com",
-			"img": "https://api.adorable.io/avatars/150/3.png"
+			"img": "https://api.adorable.io/avatars/150/3.png",
+			"address": "somewhere over the rainbow, 148"
 		},
 		{
 			"name": "Mr. Somebody",
@@ -40,7 +42,8 @@
 			"email": "abraham@email.com",
 			"age": 31,
 			"website": "http://abraham.com",
-			"img": "https://api.adorable.io/avatars/150/6.png"
+			"img": "https://api.adorable.io/avatars/150/6.png",
+			"address": "somewhere over the rainbow, 42"
 		},
 		{
 			"name": "Diogenes",

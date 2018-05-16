@@ -16,6 +16,10 @@
 		var $name 	= $('<h2>').addClass('users__name').text(user.name);
 		var $email 	= $('<p>').addClass('users__email').text(user.email);
 
+		if (user.address) {
+			$li.addClass('has-address');
+		}
+
 		$name.appendTo($info);
 		$email.appendTo($info);
 
@@ -149,9 +153,35 @@
 			newUserListComponent(users[i], $usersList);
 		}
 
+		var usersWithAddress = [];
+		var usersNotAddress = [];
+
+		for (var i = 0, len = allUsers.length; i < len; i++) {
+			var user = allUsers[i];
+
+			if (user.userElement.hasClass('has-address')) {
+				usersWithAddress.push(user.userElement);
+			}
+			else {
+				usersNotAddress.push(user.userElement);
+			}
+		}
+
+		$usersList.html('');
+
+		for (var i = 0, len = usersWithAddress.length; i < len; i++) {
+			usersWithAddress[i].appendTo($usersList);
+		}
+
+		for (var i = 0, len = usersNotAddress.length; i < len; i++) {
+			usersNotAddress[i].appendTo($usersList);
+		}
+
 		console.log('allUsers: ');
 		console.log(allUsers);
 	});
+
+
 
 	$usersList.on('click', '.users__user', selectUser);
 	$usersDisplay.on('user-selected', displayUser);
