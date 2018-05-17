@@ -4,9 +4,12 @@
 	var $usersElement 	= $('.users');
 	var $usersList 		= $usersElement.find('.users__list');
 	var $usersDisplay 	= $usersElement.find('.users__display');
+	var $closeBtn		= $usersDisplay.find('.users__display-close');
+	var $userDisplayImg = $usersDisplay.find('.users__display-img');
+	var $userDisplayName = $usersDisplay.find('.users__display-name');
+	var $userDisplayInfo = $usersDisplay.find('.users__display-info');
 	var allUsers 		= [];
 
-	//$usersList.css('top', (($(window).height() / 2) - ($(this).height() / 2)) + 'px');
 
 	function newUserListComponent(user, parent) {
 
@@ -71,20 +74,19 @@
 			$(this.userElement).removeClass('users__user--active');
 		});
 
-		$eTarget.toggleClass('users__user--active');
+		$eTarget.addClass('users__user--active');
 
 		var userObject = getUserObject($eTarget);
 
 		$usersDisplay.trigger('user-selected', [userObject]);
 	}
 
-
-	function deselectUsers() {
-		$(allUsers).each(function(i, elm) {
-			$(this.userElement).removeClass('users__user--active');
-		});
+	function deselectUser(event) {
+		console.log('CLOSE');
+		var $selectedUser = $('.users__user--active');
+		console.log('triggerin');
+		$usersList.trigger('user-deselected', [$selectedUser]);
 	}
-	
 
 	function hideDisplay() {
 
@@ -98,52 +100,37 @@
 		$usersDisplay.addClass('visible');
 	}
 
+	function hideUser(event, selectedUser) {
+
+		console.log('HIDIN');
+		hideDisplay();
+		selectedUser.removeClass('users__user--active');
+	}
+
 	function displayUser(event, userObject) {
-
-		var $closeBtn = $('.users__display-close');
-
-		$usersDisplay.html('');
-
-
-		$closeBtn = $('<div>').addClass('users__display-close').html('&times;').appendTo($usersDisplay);
 
 		var userElement = userObject.userElement;
 		var userData 	= userObject.userData;
 
 
-		var $img 	= $('<img>').addClass('users__display-img').attr('src', userData.img).appendTo($usersDisplay);
-		var $name 	= $('<h2>').addClass('users__display-name').text(userData.name).appendTo($usersDisplay);
-		var $info 	= $('<div>').addClass('users__display-info').appendTo($usersDisplay);
-		
+		$userDisplayImg.attr('src', userData.img);
+		$userDisplayName.text(userData.name);
+		$userDisplayInfo.html('');
 
 		// Create a users__display-info-pair element for each of the data fields to dislplay,
 		// and append it to the info div.
 		for (var key in userData) {
 			console.log(key);
 			if (key !== 'img' && key !== 'name') {
-				var $wrapper = $('<div>').addClass('users__display-info-pair').appendTo($info);
+				var $wrapper = $('<div>').addClass('users__display-info-pair').appendTo($userDisplayInfo);
 				var $key = $('<div>').addClass('users__display-info-key').text(key).appendTo($wrapper);
 				var $value = $('<div>').addClass('users__display-info-value').text(userData[key]).appendTo($wrapper);
 			}
 		}
 
-
-		$closeBtn.on('click', function(event) {
-
-			hideDisplay();
-			deselectUsers();
-			$(this).off();  // Removes close button event listeners.
-
-		});
-
 		showDisplay();
-
-
 		console.log(userData);
-
-
 	}
-
 
 
 	$.getJSON('data/users.json', function(data) {
@@ -182,9 +169,11 @@
 	});
 
 
-
 	$usersList.on('click', '.users__user', selectUser);
 	$usersDisplay.on('user-selected', displayUser);
+
+	$closeBtn.on('click', deselectUser);
+	$usersList.on('user-deselected', hideUser);
 
 
 })(jQuery);

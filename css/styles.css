@@ -68,6 +68,10 @@ ul li {
     .users__display.visible {
       opacity: 1;
       width: 300px; }
+  .users__display-wrapper {
+    display: block;
+    margin: 0px auto;
+    min-width: 300px; }
   .users__display-close {
     cursor: pointer;
     font-weight: bold;
