@@ -1,5 +1,7 @@
 (function ($) {
 
+	'use strict';
+
 	var users;
 	var $usersElement 	= $('.users');
 	var $usersList 		= $usersElement.find('.users__list');
@@ -54,7 +56,6 @@
 
 	// Gets a user element and returns the user's data, null if not found, or false if allUsers array is empty.
 	function getUserData(userElement) {
-		console.log('inside getUserData()');
 		if (!allUsers.length) return false;
 
 		for (var i = 0, len = allUsers.length; i < len; i++) {
@@ -82,9 +83,7 @@
 	}
 
 	function deselectUser(event) {
-		console.log('CLOSE');
 		var $selectedUser = $('.users__user--active');
-		console.log('triggerin');
 		$usersList.trigger('user-deselected', [$selectedUser]);
 	}
 
@@ -102,7 +101,6 @@
 
 	function hideUser(event, selectedUser) {
 
-		console.log('HIDIN');
 		hideDisplay();
 		selectedUser.removeClass('users__user--active');
 	}
@@ -120,7 +118,6 @@
 		// Create a users__display-info-pair element for each of the data fields to dislplay,
 		// and append it to the info div.
 		for (var key in userData) {
-			console.log(key);
 			if (key !== 'img' && key !== 'name') {
 				var $wrapper = $('<div>').addClass('users__display-info-pair').appendTo($userDisplayInfo);
 				var $key = $('<div>').addClass('users__display-info-key').text(key).appendTo($wrapper);
@@ -129,7 +126,6 @@
 		}
 
 		showDisplay();
-		console.log(userData);
 	}
 
 
@@ -163,9 +159,6 @@
 		for (var i = 0, len = usersNotAddress.length; i < len; i++) {
 			usersNotAddress[i].appendTo($usersList);
 		}
-
-		console.log('allUsers: ');
-		console.log(allUsers);
 	});
 
 
