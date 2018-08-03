@@ -1,4 +1,4 @@
-(function ($) {
+module.exports = function ($) {
 
 	'use strict';
 
@@ -129,7 +129,7 @@
 	}
 
 
-	$.getJSON('data/users.json', function(data) {
+	$.getJSON('dist/data/users.json', function(data) {
 		users = data.users;
 
 		for (i in users) {		
@@ -169,4 +169,4 @@
 	$usersList.on('user-deselected', hideUser);
 
 
-})(jQuery);
+}(jQuery);

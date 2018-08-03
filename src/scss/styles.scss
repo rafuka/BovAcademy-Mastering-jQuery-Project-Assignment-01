@@ -1,6 +1,6 @@
 
 $mainColor: purple;
-$lightColor: lighten($mainColor, 12%);
+$lightColor: #ec7aec;
 
 * {
 	box-sizing: border-box;
@@ -156,7 +156,7 @@ ul li {
 			color: white;
 			flex: 2;
 			text-align: right;
-			padding: 15px;
+			padding: 10px;
 		}
 
 		&-value {
@@ -165,7 +165,7 @@ ul li {
 			color: #333;
 			flex: 6;
 			overflow: hidden;
-			padding: 15px 7px;
+			padding: 10px 7px;
 			text-align: left;
 		}
 
